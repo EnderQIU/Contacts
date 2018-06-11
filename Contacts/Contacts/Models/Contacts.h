@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Contacts : NSObject
 
-@property NSInteger* contact_id;
+@property int contact_id;  // pk
 @property NSString * name;
 @property NSString * phone_number;
 @property NSString * address;
