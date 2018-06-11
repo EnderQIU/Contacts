@@ -14,9 +14,14 @@
 
 @implementation ExplorerViewController
 
+@synthesize explorer = _explorer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSURL * url = [NSURL URLWithString:@"https://www.baidu.com/"];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    [_explorer loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {

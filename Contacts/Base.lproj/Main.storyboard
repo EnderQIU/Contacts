@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImB-la-sGF" customClass="PhoneNumberLable">
                                 <rect key="frame" x="54" y="20" width="268" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -188,7 +188,7 @@
         <scene sceneID="gBG-4F-CHS">
             <objects>
                 <viewController id="oIv-r1-SNv" userLabel="Explorer View Controller" customClass="ExplorerViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zAx-lo-u0R" customClass="UIWebView">
+                    <view key="view" contentMode="scaleToFill" id="zAx-lo-u0R" customClass="ExplorerView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,19 +196,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explorer" image="Explorer" id="0yT-B3-opP"/>
                     <connections>
-                        <outlet property="explorer" destination="zAx-lo-u0R" id="bcJ-Dj-1UN"/>
+                        <outlet property="explorer" destination="zAx-lo-u0R" id="mAN-EU-70B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSG-Ts-SCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <wkWebView contentMode="scaleToFill" id="3f2-Wv-UsK">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <wkWebViewConfiguration key="configuration">
-                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                        <wkPreferences key="preferences"/>
-                    </wkWebViewConfiguration>
-                </wkWebView>
             </objects>
             <point key="canvasLocation" x="454" y="340"/>
         </scene>

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExplorerView.h"
 
 @interface ExplorerViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIWebView *explorer;
+@property (strong, nonatomic) IBOutlet ExplorerView *explorer;
 
 @end

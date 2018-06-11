@@ -10,8 +10,6 @@
 
 @implementation PhoneNumberLable
 
-@synthesize text = _text;
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -21,15 +19,16 @@
 */
 
 - (void)appendNumber:(NSString *)number{
-    if (_text.length == 11 ) return;
-    else if (_text.length == 3 || _text.length == 8) _text = [NSString stringWithFormat:@"%@ %@", _text, number];
-    else _text = [NSString stringWithFormat:@"%@%@", _text, number];
+    if (self.text == nil) self.text = @"";
+    if (self.text.length == 13 ) return;
+    else if (self.text.length == 3 || self.text.length == 8) self.text = [NSString stringWithFormat:@"%@ %@", self.text, number];
+    else self.text = [NSString stringWithFormat:@"%@%@", self.text, number];
 }
 
 - (void)popNumber{
-    if (_text.length == 0) return;
-    else if (_text.length == 10 || _text.length == 5) _text = [_text substringToIndex:_text.length - 2];
-    else _text = [_text substringToIndex:_text.length - 1];
+    if (self.text.length == 0) return;
+    else if (self.text.length == 10 || self.text.length == 5) self.text = [self.text substringToIndex:self.text.length - 2];
+    else self.text = [self.text substringToIndex:self.text.length - 1];
 }
 
 @end
