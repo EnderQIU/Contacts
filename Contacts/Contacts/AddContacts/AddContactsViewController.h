@@ -1,20 +1,21 @@
 //
-//  ContactsDetailViewController.h
+//  AddContactsViewController.h
 //  Contacts
 //
-//  Created by enderqiu on 2018/6/10.
+//  Created by enderqiu on 2018/6/11.
 //  Copyright © 2018年 enderqiu.cn. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "../Models/ContactsManager.h"
 
-@interface ContactsDetailViewController : UIViewController
+@interface AddContactsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *weixinNumberTextField;
-- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
+
+- (IBAction)unwindToLastViewController:(UIStoryboardSegue *)unwindSegue;
 
 @end

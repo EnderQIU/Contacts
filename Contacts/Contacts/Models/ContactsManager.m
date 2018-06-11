@@ -32,13 +32,13 @@ static ContactsManager *shared = nil;
     NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
     if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
-        NSAssert(NO, @"Database open failure.");
+        NSLog(@"Database open failure.");
     }else{
         char * err;
-        NSString * createSQL = [NSString stringWithFormat:@"create table main.contacts if not exist contacts (contacts_id int autoincrement primary key not null, name text, phone_number text, address text, weixin_number text;"];
+        NSString * createSQL = [NSString stringWithFormat:@"create table if not exists main.contacts (contacts_id integer primary key autoincrement, name text, phone_number text, address text, weixin_number text);"];
         if (sqlite3_exec(db, [createSQL UTF8String], NULL, NULL, &err) != SQLITE_OK){
             sqlite3_close(db);
-            NSAssert(NO, @"Table creation failure.");
+            NSLog(@"Table creation failure.");
         }
         sqlite3_close(db);
     }
@@ -48,13 +48,15 @@ static ContactsManager *shared = nil;
     NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
     if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
-        NSAssert(NO, @"Database open failure.");
+        NSLog(@"Database open failure.");
     }else{
         char * err;
-        NSString * sql = [NSString stringWithFormat:@"insert into main.contacts values (%@, %@, %@, %@);", model.name, model.phone_number, model.address, model.weixin_number];
+        NSString * sql = [NSString stringWithFormat:@"insert into main.contacts (name, phone_number, address, weixin_number) values ('%@', '%@', '%@', '%@');", model.name, model.phone_number, model.address, model.weixin_number];
         if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK){
             sqlite3_close(db);
-            NSAssert(NO, @"model creation failure.");
+            NSLog(@"model creation failure.");
+        }else{
+            NSLog(@"SQL: %@", sql);
         }
         sqlite3_close(db);
     }
@@ -65,13 +67,15 @@ static ContactsManager *shared = nil;
     NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
     if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
-        NSAssert(NO, @"Database open failure.");
+        NSLog(@"Database open failure.");
     }else{
         char * err;
-        NSString * sql = [NSString stringWithFormat:@"update main.contacts set (name='%@', phone_number='%@', address='%@', weixin_number='%@') where contacts_id = %i;", model.name, model.phone_number, model.address, model.weixin_number, model.contact_id];
+        NSString * sql = [NSString stringWithFormat:@"update main.contacts set name='%@', phone_number='%@', address='%@', weixin_number='%@' where contacts_id = %i;", model.name, model.phone_number, model.address, model.weixin_number, model.contact_id];
         if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK){
             sqlite3_close(db);
-            NSAssert(NO, @"model modification failure.");
+            NSLog(@"model modification failure.");
+        }else{
+            NSLog(@"SQL: %@", sql);
         }
         sqlite3_close(db);
     }
@@ -82,13 +86,15 @@ static ContactsManager *shared = nil;
     NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
     if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
-        NSAssert(NO, @"Database open failure.");
+        NSLog(@"Database open failure.");
     }else{
         char * err;
         NSString * sql = [NSString stringWithFormat:@"delete from main.contacts where contacts_id = %i", model.contact_id];
         if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK){
             sqlite3_close(db);
-            NSAssert(NO, @"model removement failure.");
+            NSLog(@"model removement failure.");
+        }else{
+            NSLog(@"SQL: %@", sql);
         }
         sqlite3_close(db);
     }
@@ -99,6 +105,14 @@ static ContactsManager *shared = nil;
     NSMutableArray *contacts = nil;
     const char *sql = "select * from main.contacts;";
     sqlite3_stmt *stmt = NULL;
+    NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
+    if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
+        sqlite3_close(db);
+        NSLog(@"Database open failure.");
+        return nil;
+    }else{
+        NSLog(@"SQL: %@", [NSString stringWithUTF8String:sql]);
+    }
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
     if (result == SQLITE_OK) {
         contacts = [NSMutableArray array];
@@ -107,11 +121,11 @@ static ContactsManager *shared = nil;
             contact.contact_id = sqlite3_column_int(stmt, 0);
             const unsigned char *name = sqlite3_column_text(stmt, 1);
             contact.name = [NSString stringWithUTF8String:(const char *)name];
-            const unsigned char *phone_number = sqlite3_column_text(stmt, 1);
+            const unsigned char *phone_number = sqlite3_column_text(stmt, 2);
             contact.phone_number = [NSString stringWithUTF8String:(const char *)phone_number];
-            const unsigned char *address = sqlite3_column_text(stmt, 1);
+            const unsigned char *address = sqlite3_column_text(stmt, 3);
             contact.address = [NSString stringWithUTF8String:(const char *)address];
-            const unsigned char *weixin_number = sqlite3_column_text(stmt, 1);
+            const unsigned char *weixin_number = sqlite3_column_text(stmt, 4);
             contact.weixin_number = [NSString stringWithUTF8String:(const char *)weixin_number];
             [contacts addObject:contact];
         }
@@ -119,6 +133,7 @@ static ContactsManager *shared = nil;
     } else {
         NSLog(@"select sql syntax error.");
     }
+    sqlite3_close(db);
     return contacts;
 }
 
@@ -126,6 +141,14 @@ static ContactsManager *shared = nil;
     NSMutableArray *contacts = nil;
     const char *sql = [[NSString stringWithFormat:@"select * from main.contacts where name like '%%%@%%';", condition] UTF8String];
     sqlite3_stmt *stmt = NULL;
+    NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
+    if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
+        sqlite3_close(db);
+        NSLog(@"Database open failure.");
+        return nil;
+    }else{
+        NSLog(@"SQL: %@", [NSString stringWithUTF8String:sql]);
+    }
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
     if (result == SQLITE_OK) {
         contacts = [NSMutableArray array];
@@ -134,11 +157,11 @@ static ContactsManager *shared = nil;
             contact.contact_id = sqlite3_column_int(stmt, 0);
             const unsigned char *name = sqlite3_column_text(stmt, 1);
             contact.name = [NSString stringWithUTF8String:(const char *)name];
-            const unsigned char *phone_number = sqlite3_column_text(stmt, 1);
+            const unsigned char *phone_number = sqlite3_column_text(stmt, 2);
             contact.phone_number = [NSString stringWithUTF8String:(const char *)phone_number];
-            const unsigned char *address = sqlite3_column_text(stmt, 1);
+            const unsigned char *address = sqlite3_column_text(stmt, 3);
             contact.address = [NSString stringWithUTF8String:(const char *)address];
-            const unsigned char *weixin_number = sqlite3_column_text(stmt, 1);
+            const unsigned char *weixin_number = sqlite3_column_text(stmt, 4);
             contact.weixin_number = [NSString stringWithUTF8String:(const char *)weixin_number];
             [contacts addObject:contact];
         }
@@ -154,16 +177,26 @@ static ContactsManager *shared = nil;
     const char *sql = [[NSString stringWithFormat:@"select * from main.contacts where contacts_id = %i;", condition] UTF8String];
     sqlite3_stmt *stmt = NULL;
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+    NSString * writableDBPath = [self applicationDocumentsDirectoryFile];
+    if (sqlite3_open([writableDBPath UTF8String], &db) != SQLITE_OK){
+        sqlite3_close(db);
+        NSLog(@"Database open failure.");
+        return nil;
+    }else{
+        NSLog(@"SQL: %@", [NSString stringWithUTF8String:sql]);
+    }
     if (result == SQLITE_OK) {
-        contact.contact_id = sqlite3_column_int(stmt, 0);
-        const unsigned char *name = sqlite3_column_text(stmt, 1);
-        contact.name = [NSString stringWithUTF8String:(const char *)name];
-        const unsigned char *phone_number = sqlite3_column_text(stmt, 1);
-        contact.phone_number = [NSString stringWithUTF8String:(const char *)phone_number];
-        const unsigned char *address = sqlite3_column_text(stmt, 1);
-        contact.address = [NSString stringWithUTF8String:(const char *)address];
-        const unsigned char *weixin_number = sqlite3_column_text(stmt, 1);
-        contact.weixin_number = [NSString stringWithUTF8String:(const char *)weixin_number];
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            contact.contact_id = sqlite3_column_int(stmt, 0);
+            const unsigned char *name = sqlite3_column_text(stmt, 1);
+            contact.name = [NSString stringWithUTF8String:(const char *)name];
+            const unsigned char *phone_number = sqlite3_column_text(stmt, 2);
+            contact.phone_number = [NSString stringWithUTF8String:(const char *)phone_number];
+            const unsigned char *address = sqlite3_column_text(stmt, 3);
+            contact.address = [NSString stringWithUTF8String:(const char *)address];
+            const unsigned char *weixin_number = sqlite3_column_text(stmt, 4);
+            contact.weixin_number = [NSString stringWithUTF8String:(const char *)weixin_number];
+        }
     } else {
         NSLog(@"select sql syntax error.");
     }

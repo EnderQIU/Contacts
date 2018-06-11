@@ -17,4 +17,6 @@
 @property NSString * address;
 @property NSString * weixin_number;
 
++ (instancetype)initWithName:(NSString*)name andPhoneNumber:(NSString*)phoneNumber andAddress:(NSString*)address andWeixinNumber:(NSString*)weixinNumber;
+
 @end

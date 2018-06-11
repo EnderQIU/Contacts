@@ -1,5 +1,5 @@
 //
-//  ContactsDetailScrollView.h
+//  ContactsDetailView.h
 //  Contacts
 //
 //  Created by enderqiu on 2018/6/10.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsDetailScrollView : UIScrollView
+@interface ContactsDetailView : UIView
 
 @end

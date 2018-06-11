@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ContactsTableView.h"
+#import "ContactsTableViewCell.h"
+#import "Models/ContactsManager.h"
 
-@interface ContactsTableViewController : UITableViewController
+@interface ContactsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet ContactsTableView *contactsTable;
 

@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3849251120CD595000098CBB /* ContactsSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251020CD595000098CBB /* ContactsSet.m */; };
 		3849251320CD603F00098CBB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3849251220CD603F00098CBB /* WebKit.framework */; };
+		3849251620CE59B300098CBB /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251520CE59B300098CBB /* ContactsTableViewCell.m */; };
+		3849251920CE5FB500098CBB /* ExplorerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251820CE5FB500098CBB /* ExplorerView.m */; };
+		3849251D20CE721200098CBB /* AddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251C20CE721200098CBB /* AddContactsViewController.m */; };
+		3849252020CE722800098CBB /* AddContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251F20CE722800098CBB /* AddContactsView.m */; };
 		38B1402D20CCCE0900178103 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */; };
 		38B1402F20CCDE5D00178103 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 38B1402E20CCDE5D00178103 /* db.sqlite3 */; };
 		38B1403920CCDF6A00178103 /* ContactsTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1403820CCDF6A00178103 /* ContactsTabBarViewController.m */; };
@@ -20,7 +23,7 @@
 		38B1405020CCE16200178103 /* ContactsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1404F20CCE16200178103 /* ContactsDetailViewController.m */; };
 		38B1405320CCE19800178103 /* ContactsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1405220CCE19800178103 /* ContactsTableView.m */; };
 		38B1405620CCE1C700178103 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1405520CCE1C700178103 /* ContactsTableViewController.m */; };
-		38B1405920CCE22A00178103 /* ContactsDetailScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1405820CCE22A00178103 /* ContactsDetailScrollView.m */; };
+		38B1405920CCE22A00178103 /* ContactsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1405820CCE22A00178103 /* ContactsDetailView.m */; };
 		38B1405D20CCE8D400178103 /* PhoneNumberLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1405C20CCE8D400178103 /* PhoneNumberLable.m */; };
 		38B328EE20CA3B2C00699CE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B328ED20CA3B2C00699CE1 /* AppDelegate.m */; };
 		38B328F420CA3B2C00699CE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B328F220CA3B2C00699CE1 /* Main.storyboard */; };
@@ -30,9 +33,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3849250F20CD595000098CBB /* ContactsSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsSet.h; sourceTree = "<group>"; };
-		3849251020CD595000098CBB /* ContactsSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsSet.m; sourceTree = "<group>"; };
 		3849251220CD603F00098CBB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3849251420CE59B300098CBB /* ContactsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		3849251520CE59B300098CBB /* ContactsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
+		3849251720CE5FB500098CBB /* ExplorerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorerView.h; sourceTree = "<group>"; };
+		3849251820CE5FB500098CBB /* ExplorerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplorerView.m; sourceTree = "<group>"; };
+		3849251B20CE721200098CBB /* AddContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactsViewController.h; sourceTree = "<group>"; };
+		3849251C20CE721200098CBB /* AddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsViewController.m; sourceTree = "<group>"; };
+		3849251E20CE722800098CBB /* AddContactsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactsView.h; sourceTree = "<group>"; };
+		3849251F20CE722800098CBB /* AddContactsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsView.m; sourceTree = "<group>"; };
 		38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		38B1402E20CCDE5D00178103 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
 		38B1403720CCDF6A00178103 /* ContactsTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTabBarViewController.h; sourceTree = "<group>"; };
@@ -53,8 +62,8 @@
 		38B1405220CCE19800178103 /* ContactsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableView.m; sourceTree = "<group>"; };
 		38B1405420CCE1C700178103 /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
 		38B1405520CCE1C700178103 /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
-		38B1405720CCE22A00178103 /* ContactsDetailScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsDetailScrollView.h; sourceTree = "<group>"; };
-		38B1405820CCE22A00178103 /* ContactsDetailScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsDetailScrollView.m; sourceTree = "<group>"; };
+		38B1405720CCE22A00178103 /* ContactsDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsDetailView.h; sourceTree = "<group>"; };
+		38B1405820CCE22A00178103 /* ContactsDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsDetailView.m; sourceTree = "<group>"; };
 		38B1405B20CCE8D400178103 /* PhoneNumberLable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberLable.h; sourceTree = "<group>"; };
 		38B1405C20CCE8D400178103 /* PhoneNumberLable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberLable.m; sourceTree = "<group>"; };
 		38B328E920CA3B2C00699CE1 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +89,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3849251A20CE71EB00098CBB /* AddContacts */ = {
+			isa = PBXGroup;
+			children = (
+				3849251B20CE721200098CBB /* AddContactsViewController.h */,
+				3849251C20CE721200098CBB /* AddContactsViewController.m */,
+				3849251E20CE722800098CBB /* AddContactsView.h */,
+				3849251F20CE722800098CBB /* AddContactsView.m */,
+			);
+			path = AddContacts;
+			sourceTree = "<group>";
+		};
 		38B1402B20CCCE0900178103 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,12 +112,15 @@
 		38B1403120CCDE7600178103 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				3849251A20CE71EB00098CBB /* AddContacts */,
 				38B1404D20CCE14800178103 /* ContactsDetail */,
 				38B1403A20CCDFC700178103 /* Models */,
 				38B1405120CCE19800178103 /* ContactsTableView.h */,
 				38B1405220CCE19800178103 /* ContactsTableView.m */,
 				38B1405420CCE1C700178103 /* ContactsTableViewController.h */,
 				38B1405520CCE1C700178103 /* ContactsTableViewController.m */,
+				3849251420CE59B300098CBB /* ContactsTableViewCell.h */,
+				3849251520CE59B300098CBB /* ContactsTableViewCell.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -117,6 +140,8 @@
 		38B1403320CCDEBC00178103 /* Explorer */ = {
 			isa = PBXGroup;
 			children = (
+				3849251720CE5FB500098CBB /* ExplorerView.h */,
+				3849251820CE5FB500098CBB /* ExplorerView.m */,
 				38B1404720CCE0E700178103 /* ExplorerViewController.h */,
 				38B1404820CCE0E700178103 /* ExplorerViewController.m */,
 			);
@@ -130,8 +155,6 @@
 				38B1403C20CCE00600178103 /* Contacts.m */,
 				38B1403E20CCE01800178103 /* ContactsManager.h */,
 				38B1403F20CCE01800178103 /* ContactsManager.m */,
-				3849250F20CD595000098CBB /* ContactsSet.h */,
-				3849251020CD595000098CBB /* ContactsSet.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,8 +164,8 @@
 			children = (
 				38B1404E20CCE16200178103 /* ContactsDetailViewController.h */,
 				38B1404F20CCE16200178103 /* ContactsDetailViewController.m */,
-				38B1405720CCE22A00178103 /* ContactsDetailScrollView.h */,
-				38B1405820CCE22A00178103 /* ContactsDetailScrollView.m */,
+				38B1405720CCE22A00178103 /* ContactsDetailView.h */,
+				38B1405820CCE22A00178103 /* ContactsDetailView.m */,
 			);
 			path = ContactsDetail;
 			sourceTree = "<group>";
@@ -265,17 +288,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				38B1405020CCE16200178103 /* ContactsDetailViewController.m in Sources */,
-				38B1405920CCE22A00178103 /* ContactsDetailScrollView.m in Sources */,
+				38B1405920CCE22A00178103 /* ContactsDetailView.m in Sources */,
 				38B1403D20CCE00600178103 /* Contacts.m in Sources */,
 				38B1405320CCE19800178103 /* ContactsTableView.m in Sources */,
+				3849252020CE722800098CBB /* AddContactsView.m in Sources */,
 				38B1405D20CCE8D400178103 /* PhoneNumberLable.m in Sources */,
+				3849251920CE5FB500098CBB /* ExplorerView.m in Sources */,
 				38B1405620CCE1C700178103 /* ContactsTableViewController.m in Sources */,
+				3849251620CE59B300098CBB /* ContactsTableViewCell.m in Sources */,
 				38B1404620CCE04900178103 /* KeypadView.m in Sources */,
 				38B1403920CCDF6A00178103 /* ContactsTabBarViewController.m in Sources */,
 				38B1404920CCE0E700178103 /* ExplorerViewController.m in Sources */,
-				3849251120CD595000098CBB /* ContactsSet.m in Sources */,
 				38B1404320CCE03700178103 /* KeypadViewController.m in Sources */,
 				38B328FC20CA3B2D00699CE1 /* main.m in Sources */,
+				3849251D20CE721200098CBB /* AddContactsViewController.m in Sources */,
 				38B328EE20CA3B2C00699CE1 /* AppDelegate.m in Sources */,
 				38B1404020CCE01800178103 /* ContactsManager.m in Sources */,
 			);

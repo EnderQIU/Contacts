@@ -10,6 +10,8 @@
 
 @interface ContactsDetailViewController ()
 
+@property int c_id;
+
 @end
 
 @implementation ContactsDetailViewController
@@ -17,6 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int contacts_id = [defaults integerForKey:@"contacts_id"];
+    Contacts * contect = [[ContactsManager shared] findById:contacts_id];
+    _c_id = contect.contact_id;
+    _nameTextField.text = contect.name;
+    _phoneNumberTextField.text = contect.phone_number;
+    _addressTextField.text = contect.address;
+    _weixinNumberTextField.text = contect.weixin_number;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +43,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    Contacts * contact = [Contacts initWithName:_nameTextField.text andPhoneNumber:_phoneNumberTextField.text andAddress:_addressTextField.text andWeixinNumber:_weixinNumberTextField.text];
+    contact.contact_id = _c_id;
+    [[ContactsManager shared]modify:contact];
+}
 
 @end

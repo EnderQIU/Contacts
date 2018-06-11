@@ -8,15 +8,60 @@
 
 #import "ContactsTableViewController.h"
 
-@interface ContactsTableViewController ()
+@interface WSRefreshControl : UIRefreshControl
+
+@end
+
+@implementation WSRefreshControl
+
+-(void)beginRefreshing
+{
+    [super beginRefreshing];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+-(void)endRefreshing
+{
+    [super endRefreshing];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+@end
+
+@interface ContactsTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation ContactsTableViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:UITableViewStylePlain];
+    if (self) [[ContactsManager shared] createEditableCopyOfDatabaseIfNeeded];
+    return self;
+}
+
+- (void)refresh{
+    if (self.refreshControl.isRefreshing){
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..."];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        
+    }
+}
+
+- (void) reloadTableView{
+    [_contactsTable reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"ContactsTableViewCell"];
+    WSRefreshControl *refresh = [[WSRefreshControl alloc]init];
+    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    [self.refreshControl beginRefreshing];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView) name:@"create" object:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,25 +74,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return [[[ContactsManager shared] findAll] count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactsTableViewCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSArray * contacts = [[ContactsManager shared] findAll];
+    Contacts *contact = contacts[indexPath.row];
+    
+    cell.textLabel.text = [contact name];
+    cell.tag = [contact contact_id];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -92,5 +138,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:cell.tag forKey:@"contacts_id"];
+}
+
+- (IBAction)removeButtonPressed:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    Contacts * contect = [[ContactsManager shared] findById:cell.tag];
+    [[ContactsManager shared] remove:contect];
+    [self reloadTableView];
+}
 
 @end

@@ -1,14 +1,14 @@
 //
-//  ContactsDetailScrollView.m
+//  AddContactsView.m
 //  Contacts
 //
-//  Created by enderqiu on 2018/6/10.
+//  Created by enderqiu on 2018/6/11.
 //  Copyright © 2018年 enderqiu.cn. All rights reserved.
 //
 
-#import "ContactsDetailScrollView.h"
+#import "AddContactsView.h"
 
-@implementation ContactsDetailScrollView
+@implementation AddContactsView
 
 /*
 // Only override drawRect: if you perform custom drawing.
