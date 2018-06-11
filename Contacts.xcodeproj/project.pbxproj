@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3849251120CD595000098CBB /* ContactsSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3849251020CD595000098CBB /* ContactsSet.m */; };
+		3849251320CD603F00098CBB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3849251220CD603F00098CBB /* WebKit.framework */; };
 		38B1402D20CCCE0900178103 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */; };
 		38B1402F20CCDE5D00178103 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 38B1402E20CCDE5D00178103 /* db.sqlite3 */; };
 		38B1403920CCDF6A00178103 /* ContactsTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1403820CCDF6A00178103 /* ContactsTabBarViewController.m */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3849250F20CD595000098CBB /* ContactsSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsSet.h; sourceTree = "<group>"; };
+		3849251020CD595000098CBB /* ContactsSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsSet.m; sourceTree = "<group>"; };
+		3849251220CD603F00098CBB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		38B1402E20CCDE5D00178103 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
 		38B1403720CCDF6A00178103 /* ContactsTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTabBarViewController.h; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3849251320CD603F00098CBB /* WebKit.framework in Frameworks */,
 				38B1402D20CCCE0900178103 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +83,7 @@
 		38B1402B20CCCE0900178103 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3849251220CD603F00098CBB /* WebKit.framework */,
 				38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */,
 			);
 			name = Frameworks;
@@ -123,6 +130,8 @@
 				38B1403C20CCE00600178103 /* Contacts.m */,
 				38B1403E20CCE01800178103 /* ContactsManager.h */,
 				38B1403F20CCE01800178103 /* ContactsManager.m */,
+				3849250F20CD595000098CBB /* ContactsSet.h */,
+				3849251020CD595000098CBB /* ContactsSet.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 				38B1404620CCE04900178103 /* KeypadView.m in Sources */,
 				38B1403920CCDF6A00178103 /* ContactsTabBarViewController.m in Sources */,
 				38B1404920CCE0E700178103 /* ExplorerViewController.m in Sources */,
+				3849251120CD595000098CBB /* ContactsSet.m in Sources */,
 				38B1404320CCE03700178103 /* KeypadViewController.m in Sources */,
 				38B328FC20CA3B2D00699CE1 /* main.m in Sources */,
 				38B328EE20CA3B2C00699CE1 /* AppDelegate.m in Sources */,
