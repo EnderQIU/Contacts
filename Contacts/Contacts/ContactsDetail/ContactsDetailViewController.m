@@ -34,20 +34,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+- (IBAction)backOff:(id)sender {
     Contacts * contact = [Contacts initWithName:_nameTextField.text andPhoneNumber:_phoneNumberTextField.text andAddress:_addressTextField.text andWeixinNumber:_weixinNumberTextField.text];
     contact.contact_id = _c_id;
     [[ContactsManager shared]modify:contact];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

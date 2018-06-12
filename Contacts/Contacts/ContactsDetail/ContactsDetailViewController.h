@@ -15,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *weixinNumberTextField;
-- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)backOff:(id)sender;
 
 @end

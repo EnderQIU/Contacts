@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *weixinNumberTextField;
 
-- (IBAction)unwindToLastViewController:(UIStoryboardSegue *)unwindSegue;
+- (IBAction)backOff:(id)sender;
 
 @end

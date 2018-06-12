@@ -193,7 +193,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="Jm4-6m-5lz">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Jm4-6m-5lz" customClass="ContactsSearchBar">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -214,11 +214,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="NVm-r8-lcy">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="knr-Ji-ixe">
-                            <connections>
-                                <segue destination="qdk-L8-6Uz" kind="show" id="Xrl-E7-h6u"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="edit" id="knr-Ji-ixe">
+                                <connections>
+                                    <segue destination="qdk-L8-6Uz" kind="show" id="Xrl-E7-h6u"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="v8N-8v-KOw">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="0ji-W2-P70" id="a3a-mz-q6h"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="CNG-nd-y4u">
                                 <connections>
@@ -234,6 +241,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contactsTable" destination="IQa-fW-f9F" id="tNf-NS-1iC"/>
+                        <outlet property="searchBar" destination="Jm4-6m-5lz" id="4E2-xC-eFh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9z6-6e-HQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -259,6 +267,7 @@
                                 <rect key="frame" x="16" y="161" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-o3-OaN">
@@ -310,7 +319,7 @@
                     <navigationItem key="navigationItem" title="Add Contact" id="XZR-Ph-FX2">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2SJ-Md-fGj">
                             <connections>
-                                <action selector="unwindToLastViewController:" destination="SQR-4R-XVz" id="8IC-D3-GTu"/>
+                                <action selector="backOff:" destination="SQR-4R-XVz" id="idZ-lu-RsE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -344,6 +353,7 @@
                                 <rect key="frame" x="16" y="132" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HN-DE-vuB">
@@ -395,7 +405,7 @@
                     <navigationItem key="navigationItem" title="Contact Details" id="Wp8-Zb-itG">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="eKC-Hv-qbi">
                             <connections>
-                                <action selector="doneButtonPressed:" destination="qdk-L8-6Uz" id="zUW-Ki-M7B"/>
+                                <action selector="backOff:" destination="qdk-L8-6Uz" id="sxI-BF-b7G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

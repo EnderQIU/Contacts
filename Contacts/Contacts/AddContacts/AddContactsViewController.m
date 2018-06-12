@@ -39,11 +39,10 @@
 }
 */
 
-- (IBAction)unwindToLastViewController:(UIStoryboardSegue *)unwindSegue
-{
+- (IBAction)backOff:(id)sender {
     Contacts * conect = [Contacts initWithName:_nameTextField.text andPhoneNumber:_phoneNumberTextField.text andAddress:_addressTextField.text andWeixinNumber:_weixinNumberTextField.text];
     [[ContactsManager shared] create:conect];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"create" object:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 @end

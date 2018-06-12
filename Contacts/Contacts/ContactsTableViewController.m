@@ -69,6 +69,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self reloadTableView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -79,14 +84,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[ContactsManager shared] findAll] count];
+    if (![_searchBar.text  isEqual: @""]){
+        return [[[ContactsManager shared] findByName:_searchBar.text] count];
+    }else{
+        return [[[ContactsManager shared] findAll] count];
+    }
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactsTableViewCell" forIndexPath:indexPath];
-    
-    NSArray * contacts = [[ContactsManager shared] findAll];
+    NSArray * contacts;
+    if (![_searchBar.text isEqual: @""]){
+        contacts = [[ContactsManager shared] findByName:_searchBar.text];
+    }else{
+        contacts = [[ContactsManager shared] findAll];
+    }
     Contacts *contact = contacts[indexPath.row];
     
     cell.textLabel.text = [contact name];
@@ -153,4 +165,24 @@
     [self reloadTableView];
 }
 
+- (IBAction)shareButtonPressed:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    Contacts * contect = [[ContactsManager shared] findById:cell.tag];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:contect, nil] applicationActivities:nil];
+    // activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
+    activityVC.completionWithItemsHandler = ^(NSString *activityType,BOOL completed,NSArray *returnedItems,NSError *activityError)
+    {
+        NSLog(@"%@", activityType);
+        
+        if (completed) { // 确定分享
+            NSLog(@"分享成功");
+        }
+        else {
+            NSLog(@"分享失败");
+        }
+    };
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
 @end

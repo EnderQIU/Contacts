@@ -30,6 +30,7 @@
 		38B328F620CA3B2D00699CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B328F520CA3B2D00699CE1 /* Assets.xcassets */; };
 		38B328F920CA3B2D00699CE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B328F720CA3B2D00699CE1 /* LaunchScreen.storyboard */; };
 		38B328FC20CA3B2D00699CE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B328FB20CA3B2D00699CE1 /* main.m */; };
+		F88130C220CF502400748955 /* ContactsSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F88130C120CF502400748955 /* ContactsSearchBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +44,7 @@
 		3849251E20CE722800098CBB /* AddContactsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactsView.h; sourceTree = "<group>"; };
 		3849251F20CE722800098CBB /* AddContactsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsView.m; sourceTree = "<group>"; };
 		38B1402C20CCCE0900178103 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		38B1402E20CCDE5D00178103 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
+		38B1402E20CCDE5D00178103 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = db.sqlite3; sourceTree = "<group>"; };
 		38B1403720CCDF6A00178103 /* ContactsTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTabBarViewController.h; sourceTree = "<group>"; };
 		38B1403820CCDF6A00178103 /* ContactsTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTabBarViewController.m; sourceTree = "<group>"; };
 		38B1403B20CCE00600178103 /* Contacts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
@@ -74,6 +75,8 @@
 		38B328F820CA3B2D00699CE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38B328FA20CA3B2D00699CE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38B328FB20CA3B2D00699CE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F88130C020CF502400748955 /* ContactsSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsSearchBar.h; sourceTree = "<group>"; };
+		F88130C120CF502400748955 /* ContactsSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsSearchBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				38B1405520CCE1C700178103 /* ContactsTableViewController.m */,
 				3849251420CE59B300098CBB /* ContactsTableViewCell.h */,
 				3849251520CE59B300098CBB /* ContactsTableViewCell.m */,
+				F88130C020CF502400748955 /* ContactsSearchBar.h */,
+				F88130C120CF502400748955 /* ContactsSearchBar.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				38B1405620CCE1C700178103 /* ContactsTableViewController.m in Sources */,
 				3849251620CE59B300098CBB /* ContactsTableViewCell.m in Sources */,
 				38B1404620CCE04900178103 /* KeypadView.m in Sources */,
+				F88130C220CF502400748955 /* ContactsSearchBar.m in Sources */,
 				38B1403920CCDF6A00178103 /* ContactsTabBarViewController.m in Sources */,
 				38B1404920CCE0E700178103 /* ExplorerViewController.m in Sources */,
 				38B1404320CCE03700178103 /* KeypadViewController.m in Sources */,

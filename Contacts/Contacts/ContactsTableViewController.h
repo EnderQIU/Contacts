@@ -10,9 +10,14 @@
 #import "ContactsTableView.h"
 #import "ContactsTableViewCell.h"
 #import "Models/ContactsManager.h"
+#import "ContactsSearchBar.h"
 
-@interface ContactsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ContactsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+@property (weak, nonatomic) IBOutlet ContactsSearchBar *searchBar;
 
 @property (strong, nonatomic) IBOutlet ContactsTableView *contactsTable;
+
+- (IBAction)shareButtonPressed:(id)sender;
 
 @end
